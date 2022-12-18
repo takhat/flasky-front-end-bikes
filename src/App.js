@@ -1,6 +1,7 @@
 import "./App.css";
 import BikeList from "./components/BikeList";
 import Navbar from "./components/Navbar";
+
 function App() {
   const bikesList = [
     {
