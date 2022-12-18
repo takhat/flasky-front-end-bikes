@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./Bike.css";
 
 const Bike = ({ id, name, size, type, price }) => {
@@ -14,4 +15,11 @@ const Bike = ({ id, name, size, type, price }) => {
   );
 };
 
+Bike.PropType = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  size: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+};
 export default Bike;

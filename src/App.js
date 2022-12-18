@@ -18,6 +18,13 @@ function App() {
       price: 90,
       type: "duplicate",
     },
+    {
+      id: 3,
+      name: "Expensive Bike",
+      size: 45,
+      price: 900,
+      type: "expensive",
+    },
   ];
 
   return (
