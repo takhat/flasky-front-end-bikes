@@ -1,3 +1,5 @@
+import "./Bike.css";
+
 const Bike = () => {
   const myBike = {
     id: 1,
@@ -8,7 +10,7 @@ const Bike = () => {
   };
   return (
     <div>
-      <h2>{myBike.name}</h2>
+      <h2 className="bike__name">{myBike.name}</h2>
       <ul>
         <li>{myBike.id}</li>
         <li>{myBike.size}</li>

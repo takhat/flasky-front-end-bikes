@@ -1,10 +1,10 @@
 import "./App.css";
-import Bike from "./components/Bike";
+import BikeList from "./components/BikeList.js";
 
 function App() {
   return (
-    <div className="App">
-      <Bike />
+    <div>
+      <BikeList />
       <button>Add Bike</button>
     </div>
   );
