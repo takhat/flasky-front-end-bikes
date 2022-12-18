@@ -1,31 +1,16 @@
 import Bike from "./Bike";
 
-const BikeList = () => {
-  const bikesList = [
-    {
-      id: 1,
-      name: "My Bike",
-      size: 50,
-      price: 100,
-      type: "special",
-    },
-    {
-      id: 2,
-      name: "Another Bike",
-      size: 30,
-      price: 90,
-      type: "duplicate",
-    },
-  ];
-
+const BikeList = ({ bikesList }) => {
   return bikesList.map((bike) => (
-    <Bike
-      id={bike.id}
-      name={bike.name}
-      size={bike.size}
-      price={bike.price}
-      type={bike.type}
-    />
+    <li key={bike.id}>
+      <Bike
+        id={bike.id}
+        name={bike.name}
+        size={bike.size}
+        price={bike.price}
+        type={bike.type}
+      />
+    </li>
   ));
 };
 

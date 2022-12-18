@@ -6,7 +6,9 @@ const Navbar = () => {
   return (
     <nav>
       {links.map((link) => (
-        <a href="https://adadevelopersacademy.org">{link}</a>
+        <a key={link} href="https://adadevelopersacademy.org">
+          {link}
+        </a>
       ))}
     </nav>
   );
