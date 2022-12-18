@@ -18,7 +18,15 @@ const BikeList = () => {
     },
   ];
 
-  return bikesList.map((bike) => <Bike />);
+  return bikesList.map((bike) => (
+    <Bike
+      id={bike.id}
+      name={bike.name}
+      size={bike.size}
+      price={bike.price}
+      type={bike.type}
+    />
+  ));
 };
 
 export default BikeList;
