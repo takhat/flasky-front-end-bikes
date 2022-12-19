@@ -5,15 +5,14 @@ const BikeList = ({ bikesList }) => {
   const bikeComponents = [];
   for (const bike of bikesList) {
     bikeComponents.push(
-      <li key={bike.id}>
-        <Bike
-          id={bike.id}
-          name={bike.name}
-          size={bike.size}
-          price={bike.price}
-          type={bike.type}
-        />
-      </li>
+      <Bike
+        key={bike.id}
+        id={bike.id}
+        name={bike.name}
+        size={bike.size}
+        price={bike.price}
+        type={bike.type}
+      />
     );
   }
   return <div>{bikeComponents} </div>;
