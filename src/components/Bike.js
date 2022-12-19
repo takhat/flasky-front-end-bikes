@@ -13,11 +13,7 @@ const Bike = ({ id, name, size, type, price }) => {
     }
   };
 
-  const getColorFromPrice = (price) => {
-    let myBudget = 100;
-    if (price <= myBudget) return "green";
-    return "red";
-  };
+  const priceColor = bikePrice <= 100 ? "green" : "red";
 
   return (
     <div>
@@ -25,12 +21,7 @@ const Bike = ({ id, name, size, type, price }) => {
       <ul>
         <li>ID: {id}</li>
         <li>Size: {size}</li>
-        <li>
-          Price:
-          <span style={{ color: getColorFromPrice(bikePrice) }}>
-            ${bikePrice}
-          </span>
-        </li>
+        <li className={priceColor}>Price:${bikePrice}</li>
         <li>Type: {type}</li>
       </ul>
       <button
