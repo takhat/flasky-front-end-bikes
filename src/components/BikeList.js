@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Bike from "./Bike";
 
-const BikeList = ({ bikesList }) => {
+const BikeList = ({ bikesList, updatePrice, deleteBike }) => {
   const bikeComponents = [];
   for (const bike of bikesList) {
     bikeComponents.push(
@@ -12,6 +12,8 @@ const BikeList = ({ bikesList }) => {
         size={bike.size}
         price={bike.price}
         type={bike.type}
+        updatePrice={updatePrice}
+        deleteBike={deleteBike}
       />
     );
   }
@@ -27,5 +29,7 @@ BikeList.propTypes = {
       price: PropTypes.number.isRequired,
     })
   ),
+  updatePrice: PropTypes.func.isRequired,
+  deleteBike: PropTypes.func.isRequired,
 };
 export default BikeList;

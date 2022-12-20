@@ -1,19 +1,19 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Bike.css";
 
-const Bike = ({ id, name, size, type, price }) => {
-  const [bikePrice, setBikePrice] = useState(price);
-
+const Bike = ({ id, name, size, type, price, updatePrice, deleteBike }) => {
   const updateBikePrice = (inc) => {
     if (inc) {
-      setBikePrice(bikePrice + 1);
+      updatePrice(id, price + 1);
     } else {
-      setBikePrice(bikePrice - 1);
+      updatePrice(id, price - 1);
     }
   };
 
-  const priceColor = bikePrice <= 100 ? "green" : "red";
+  const deleteBikeObj = () => {
+    deleteBike(id);
+  };
+  const priceColor = price <= 100 ? "green" : "red";
 
   return (
     <div>
@@ -21,7 +21,7 @@ const Bike = ({ id, name, size, type, price }) => {
       <ul>
         <li>ID: {id}</li>
         <li>Size: {size}</li>
-        <li className={priceColor}>Price:${bikePrice}</li>
+        <li className={priceColor}>Price:${price}</li>
         <li>Type: {type}</li>
       </ul>
       <button
@@ -38,6 +38,7 @@ const Bike = ({ id, name, size, type, price }) => {
       >
         Decrease Price
       </button>
+      <button onClick={deleteBikeObj}>Delete Bike</button>
     </div>
   );
 };
@@ -48,5 +49,7 @@ Bike.PropType = {
   size: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
+  updatePrice: PropTypes.func.isRequired,
+  deleteBike: PropTypes.func.isRequired,
 };
 export default Bike;
