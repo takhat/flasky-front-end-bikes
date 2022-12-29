@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./NewBikeForm.css";
+import PropTypes from "prop-types";
 
 const INITIAL_FORM_DATA = {
   size: 20,
@@ -7,7 +8,7 @@ const INITIAL_FORM_DATA = {
   price: 50,
   name: "Hella",
 };
-const NewBikeForm = () => {
+const NewBikeForm = (props) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleChange = (e) => {
@@ -22,8 +23,13 @@ const NewBikeForm = () => {
     setFormData(newFormData);
   };
 
+  const handleNewBikeSubmit = (e) => {
+    e.preventDefault();
+    props.addBikeCallBackFunc(formData);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleNewBikeSubmit}>
       <label htmlFor="size">Bike Size</label>
       <input
         type="number"
@@ -56,8 +62,12 @@ const NewBikeForm = () => {
         value={formData.price}
         onChange={handleChange}
       />
+
+      <input type="submit" value="Add Bike" />
     </form>
   );
 };
-
+NewBikeForm.propTypes = {
+  addBikeCallBackFunc: PropTypes.func.isRequired,
+};
 export default NewBikeForm;

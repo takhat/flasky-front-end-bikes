@@ -31,24 +31,25 @@ import NewBikeForm from "./components/NewBikeForm";
 
 function App() {
   const [bikesList, setBikesList] = useState([]);
+
   const URL = "http://127.0.0.1:5000/bike";
 
-  useEffect(() => {
+  const fetchAllBikes = () => {
     axios
       .get(URL)
       .then((res) => {
-        console.log(res);
-        const bikesAPIResponseCopy = res.data.map((bike) => {
+        const bikesAPIResCopy = res.data.map((bike) => {
           return {
             ...bike,
           };
         });
-        setBikesList(bikesAPIResponseCopy);
+        setBikesList(bikesAPIResCopy);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  };
+  useEffect(fetchAllBikes, []);
 
   // const initialCopy = bikesAPIResponseCopy.map((bike) => {
   //   return { ...bike };
@@ -97,6 +98,16 @@ function App() {
       });
   };
 
+  const addBike = (newBikeInfo) => {
+    axios
+      .post(URL, newBikeInfo)
+      .then((res) => {
+        fetchAllBikes();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <Navbar />
@@ -105,7 +116,7 @@ function App() {
         updatePrice={updatePrice}
         deleteBike={deleteBike}
       />
-      <NewBikeForm />
+      <NewBikeForm addBikeCallBackFunc={addBike} />
     </div>
   );
 }
